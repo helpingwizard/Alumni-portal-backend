@@ -15,18 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('trust proxy', true);
 
-const corsOptions = {
-    origin: [
-        "http://localhost:3000",
-        "https://staging-test--alumniportal-test.netlify.app",
-        "https://alumniportal-test.netlify.app",
-        "https://alumniportaladmin.netlify.app"
-    ],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-    optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(session({
     secret: 'your-secret-key',
