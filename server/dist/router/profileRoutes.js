@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const { isAuthenticated } = require('../middleware/userMiddleware');
+const { getAllProfiles, getProfile, postUserProfiles, updateProfiles, deleteProfiles } = require("../controllers/profileController");
+const { addCompany, deleteCompany, addDomain, deleteDomain, addskills, deleteSkill, addUniversity, getAllDomains } = require("../controllers/domainController");
+const profileRouter = express_1.default.Router();
+profileRouter.get("/", isAuthenticated, getAllProfiles);
+profileRouter.get("/:id", isAuthenticated, getProfile);
+profileRouter.post('/', isAuthenticated, postUserProfiles);
+profileRouter.put('/', isAuthenticated, updateProfiles);
+profileRouter.delete('/deleteProfile/:id', isAuthenticated, deleteProfiles);
+profileRouter.post("/company", isAuthenticated, addCompany);
+profileRouter.delete('/company/delete', isAuthenticated, deleteCompany);
+profileRouter.post("/domain", isAuthenticated, addDomain);
+profileRouter.delete("/domain/delete", isAuthenticated, deleteDomain);
+profileRouter.post("/skill", isAuthenticated, addskills);
+profileRouter.delete("/skill/delete", isAuthenticated, deleteSkill);
+profileRouter.post("/university", addUniversity);
+profileRouter.get("/alldomains", getAllDomains);
+module.exports = profileRouter;
