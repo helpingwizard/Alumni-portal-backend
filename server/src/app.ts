@@ -13,7 +13,7 @@ import axios from 'axios';
 const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.set('trust proxy', true);
+//app.set('trust proxy', true);
 
 app.use(cors());
 
